@@ -12,9 +12,9 @@ class AdminController < ApplicationController
     @element = Element.find_by(slug: params[:id])
     unless @element.nil?
       @element.destroy
-      redirect_to "admin#index"
+      redirect_to controller: 'admin', action: 'index'
     else
-      redirect_to "admin#index", flash: {message: "cette identifiant n'existe pas: #{params[:id]}"}
+      redirect_to controller: 'admin', action: 'index', flash: {message: "cette identifiant n'existe pas: #{params[:id]}"}
     end
   end
 
