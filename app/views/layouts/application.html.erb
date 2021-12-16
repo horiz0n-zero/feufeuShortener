@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+  <head>
+    <title>FeufeuShortener</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/javascript">
+      function copy(txt) {
+        var input = document.createElement('textarea');
+        input.innerHTML = txt;
+        document.body.appendChild(input);
+        input.select();
+        var result = document.execCommand('copy');
+        document.body.removeChild(input);
+        return result;
+      }
+    </style>
+  </head>
+
+  <body style="min-height:100%; padding:0; margin:0; position:relative;">
+    <% flash.each do |type, message| %>
+    <script>alert("<%= message %>")</script>
+    <% end %>
+    <header style="position: fixed; top:0; width:100%; height:80px; background-color: aliceblue;">
+      <h1 style="text-align: center">FeuFeu's Shortener</h1>
+    </header>
+    <div style="margin-top: 80px"></div>
+    <%= yield %>
+    <footer style="bottom:0; padding-top: 16px; width:100%; height:60px; background-color: aliceblue;">
+      <h3 style="text-align:center;">© 2021 Antoine Feuerstein</h3>
+    </footer>
+  </body>
+</html>
